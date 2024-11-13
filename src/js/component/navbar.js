@@ -5,6 +5,7 @@ import { Context } from "../store/appContext";
 export const Navbar = () => {
 	const { store, actions } = useContext(Context)
 
+
 	return (
 		<nav className="navbar navbar-expand-lg bg-dark navbar-dark">
 			<div className="container-fluid">
@@ -17,10 +18,25 @@ export const Navbar = () => {
 					<ul className="dropdown-menu dropdown-menu-end">
 
 
-						{store.favorites && store.favorites.length > 0 ? (
-							store.favorites.map((item, index) => (
+						{store?.favorites && store?.favorites.length > 0 ? (
+							store?.favorites?.map((item, index) => (
 								<li key={index} className="dropdown-item d-flex justify-content-between align-items-center">
-									<span>{item.name}</span>
+
+									<Link
+										to={
+											item.type === "people"
+												? `/detailsCharacters/${item.uid}`
+												: item.type === "vehicles"
+													? `/detailsVehicles/${item.uid}`
+													: item.type === "planets"
+														? `/detailsPlanets/${item.uid}`
+														: "/not-found" // Ruta por defecto si no coincide con ningún tipo
+										}
+										className="text-decoration-none text-dark"
+										onClick={() => console.log(`Navigating to: ${item.type}, UID: ${item.uid}`)}>
+										{item.name}
+									</Link>
+
 									<button className="btn btn-sm btn-danger ms-2">
 										<i className="fas fa-trash-alt" onClick={() => actions.deleteFavorites(item)}></i>
 									</button>
