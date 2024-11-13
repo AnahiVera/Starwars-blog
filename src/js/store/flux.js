@@ -47,10 +47,19 @@ const getState = ({ getStore, getActions, setStore }) => {
                     .then((responseJson) => setStore({ planets: responseJson.results }))
                     .catch((error) => console.log("Error fetching:", error));
             },
-            addFavorites: (itemFavorito) => {
+            addFavorites: (item) => {
                 const store = getStore()
-                if (!store.favorites.includes(itemFavorito)) {
-                    setStore({ favorites: [...store.favorites, itemFavorito] });
+                const newFavorite = {
+                    name: item.name,
+                    uid: item.uid,
+                    type: item.type, 
+                }
+                const exists = store.favorites.some(fav => fav.uid === item.uid && fav.type === item.type);
+                if (!exists) {
+                    setStore({ favorites: [...store.favorites, newFavorite] });
+                    console.log("Added to favorites:", newFavorite);
+                } else {
+                    console.log("Favorite already exists:", newFavorite);
                 }
             },
             deleteFavorites: (itemFavorito) => {

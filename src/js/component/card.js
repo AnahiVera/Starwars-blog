@@ -16,7 +16,13 @@ export const Card = ({ item, type }) => {   /* item puede ser character, vehicle
 			<div className="card-body">
 				<h5 className="card-title">{item?.name}</h5>
 
-				<button onClick={() => actions.addFavorites(item)} className="btn btn-info m-1">
+				<button
+					onClick={() => {
+						const newItem = { ...item, type };
+						actions.addFavorites(newItem);
+						console.log("Adding to favorites:", newItem);
+					}}
+					className="btn btn-info m-1">
 					<i className={isFavorite ? "fa-solid fa-heart" : "fa-regular fa-heart"}></i>
 				</button>
 				{

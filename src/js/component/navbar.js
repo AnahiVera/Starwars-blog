@@ -5,6 +5,7 @@ import { Context } from "../store/appContext";
 export const Navbar = () => {
 	const { store, actions } = useContext(Context)
 
+	console.log("Favorites in store:", store.favorites);
 
 	return (
 		<nav className="navbar navbar-expand-lg bg-dark navbar-dark">
@@ -14,14 +15,13 @@ export const Navbar = () => {
 				</Link>
 				<div className="btn-group">
 					<button type="button" className="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown"
-						aria-expanded="false">Favorites ({store.favorites.length})</button>
+						aria-expanded="false">Favorites ({store?.favorites?.length})</button>
 					<ul className="dropdown-menu dropdown-menu-end">
 
 
 						{store?.favorites && store?.favorites.length > 0 ? (
 							store?.favorites?.map((item, index) => (
 								<li key={index} className="dropdown-item d-flex justify-content-between align-items-center">
-
 									<Link
 										to={
 											item.type === "people"
