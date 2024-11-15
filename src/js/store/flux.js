@@ -61,6 +61,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                 } else {
                     console.log("Favorite already exists:", newFavorite);
                 }
+                
             },
             deleteFavorites: (itemFavorito) => {
                 const store = getStore()
