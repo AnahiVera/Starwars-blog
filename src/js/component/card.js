@@ -10,9 +10,16 @@ export const Card = ({ item, type }) => {   /* item puede ser character, vehicle
 
 	const isFavorite = store.favorites.some(favorite => favorite.name === item.name);
 
+	const getImageByUid = (uid) => {
+		const basePath = "/img/people/";
+
+		return uid ? `${basePath}${uid}.jpg` : {starwars};
+
+	}
+
 	return (
 		<div className="card justify-center items-center m-1 w-100 text-black ">
-			<img src="{starwars}" className="card-img-top" alt="..." />
+			<img src={starwars} className="card-img-top" alt={item.name} />
 			<div className="card-body">
 				<h5 className="card-title">{item?.name}</h5>
 
