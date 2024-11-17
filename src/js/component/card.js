@@ -10,10 +10,12 @@ export const Card = ({ item, type }) => {   /* item puede ser character, vehicle
 
 	const isFavorite = store.favorites.some(favorite => favorite.name === item.name);
 
-	const getImageByUid = (uid) => {
+	/* const getImageByUid = (uid) => {
 		const basePath = "/img/people/";
+		const imageUrl = `https://starwars-visualguide.com/assets/img/${imageTypeMap[type]}/${id}.jpg`;
+		image={`https://starwars-visualguide.com/assets/img/characters/${person.uid}.jpg`}
 
-		return uid ? `${basePath}${uid}.jpg` : {starwars};
+		return uid ? `${basePath}${uid}.jpg` : {starwars}; */
 
 	}
 
