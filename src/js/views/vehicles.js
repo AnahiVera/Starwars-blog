@@ -11,7 +11,7 @@ export const Vehicles = () => {
             <h2>Vehicles</h2>
             <div className="row">
                 {Array.isArray(store.vehicles) && store.vehicles.map((item, index) => (
-                    <div className="col-md-3" key={index}>
+                    <div className="col-md-3  my-4" key={index}>
                         <Card item={item} type="vehicles"/>
                     </div>
                 ))}

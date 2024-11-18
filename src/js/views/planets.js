@@ -11,7 +11,7 @@ export const Planets = () => {
             <h2>Planets</h2>
             <div className="row">
                 {Array.isArray(store.planets) && store.planets.map((item, index) => (
-                    <div className="col-md-3" key={index}>
+                    <div className="col-md-3 my-4" key={index}>
                         <Card item={item} type="planets"/>
                     </div>
                 ))}
