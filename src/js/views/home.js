@@ -14,8 +14,8 @@ export const Home = () => {
 
 	return (
 
-		<div className="container d-flex justify-content-center">
-			<div id="carouselExampleCaptions" className="carousel slide d-flex justify-content-center">
+		<div className="container d-flex justify-content-center w-100">
+			<div id="carouselExampleCaptions" className="carousel slide d-flex justify-content-center w-100">
 				<div className="carousel-indicators">
 					<button
 						type="button"
@@ -40,21 +40,21 @@ export const Home = () => {
 				</div>
 				<div className="carousel-inner">
 					<div className="carousel-item active">
-						<Link to="/characters"><img src={characters} className="d-block w-100" alt="..." /> </Link>
+						<Link to="/characters"><img src={characters} className="d-flex w-100" alt="..." /> </Link>
 						<div className="carousel-caption d-none d-md-block">
 							<h1>CHARACTERS</h1>
 
 						</div>
 					</div>
 					<div className="carousel-item">
-						<Link to="/vehicles"><img src={vehicles} className="d-block w-100" alt="..." /></Link>
+						<Link to="/vehicles"><img src={vehicles} className="d-flex w-100" alt="..." /></Link>
 						<div className="carousel-caption d-none d-md-block">
 							<h1>VEHICLES</h1>
 
 						</div>
 					</div>
 					<div className="carousel-item">
-						<Link to="/planets"><img src={planets} className="d-block w-100" alt="..." /> </Link>
+						<Link to="/planets"><img src={planets} className="d-flex w-100" alt="..." /> </Link>
 						<div className="carousel-caption d-none d-md-block">
 							<h1>PLANETS</h1>
 

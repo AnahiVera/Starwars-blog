@@ -5,8 +5,6 @@ import { Context } from "../store/appContext";
 export const Navbar = () => {
 	const { store, actions } = useContext(Context)
 
-	console.log("Favorites in store:", store.favorites);
-
 	return (
 		<nav className="navbar navbar-expand-lg bg-dark navbar-dark">
 			<div className="container-fluid">
