@@ -8,16 +8,33 @@ export const DetailsCharacters = () => {
 	const { store, actions } = useContext(Context);
 	const params = useParams();
 
+	const getImageByUid = (uid) => {
+		if (!uid) return starwars; // Imagen por defecto si no hay uid
+
+		const typeMapping = {
+			people: `https://starwars-visualguide.com/assets/img/characters/${uid}.jpg`,
+		};
+		return typeMapping["people"] || starwars; // Imagen por defecto para tipos no válidos
+	};
+
 
 	useEffect(() => {
 		actions.getCharacterViews(params.id);
-	}, [params.id]);
+	}, [params.id, actions]);
+
+	const character = store.character; // Facilita el acceso a los datos del personaje
+
+	if (!character) {
+		return <div className="spinner-border" role="status">
+			<span className="visually-hidden">Loading...</span>
+		</div>;
+	}
 
 	return (
 		<div className="vh-75 d-flex justify-content-center mt-4 text-white">
 			<div className="row w-100">
 				<div className="col-6 justify-content-center align-items-center ">
-					<img src={starwars} className="" alt="character image" />
+					<img src={getImageByUid(params.id)} className="img-fluid" alt={character.name || "Star Wars character"} onError={(e) => { e.target.src = starwars;}} />
 				</div>
 				<div className="col-6">
 					<h3>{store?.character?.name}</h3>

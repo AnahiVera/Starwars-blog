@@ -9,10 +9,28 @@ export const DetailsVehicles = () => {
 	const { store, actions } = useContext(Context);
 	const params = useParams();
 
+	const getImageByUid = (uid) => {
+		if (!uid) return starwars; // Imagen por defecto si no hay uid
+
+		const typeMapping = {
+			planets: `https://starwars-visualguide.com/assets/img/planets/${uid}.jpg`,
+		};
+		return typeMapping["planets"] || starwars; // Imagen por defecto para tipos no válidos
+	};
+
 
 	useEffect(() => {
 		actions.getVehiclesViews(params.id);
-	}, [params.id]);
+	}, [params.id, actions]);
+
+	const planet = store.planet; // Facilita el acceso a los datos 
+
+	if (!planet) {
+		return <div className="spinner-border" role="status">
+			<span className="visually-hidden">Loading...</span>
+		</div>;
+	}
+
 
 	return (
 		<div className="vh-75 d-flex justify-content-center mt-4 text-white">

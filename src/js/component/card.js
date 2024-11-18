@@ -10,18 +10,22 @@ export const Card = ({ item, type }) => {   /* item puede ser character, vehicle
 
 	const isFavorite = store.favorites.some(favorite => favorite.name === item.name);
 
-	/* const getImageByUid = (uid) => {
-		const basePath = "/img/people/";
-		const imageUrl = `https://starwars-visualguide.com/assets/img/${imageTypeMap[type]}/${id}.jpg`;
-		image={`https://starwars-visualguide.com/assets/img/characters/${person.uid}.jpg`}
+	const getImageByUid = (uid) => {
+		if (!uid) return starwars; // Imagen por defecto si no hay uid
 
-		return uid ? `${basePath}${uid}.jpg` : {starwars}; */
+		const typeMapping = {
+			people: `https://starwars-visualguide.com/assets/img/characters/${uid}.jpg`,
+			vehicles: `https://starwars-visualguide.com/assets/img/vehicles/${uid}.jpg`,
+			planets: `https://starwars-visualguide.com/assets/img/planets/${uid}.jpg`
+		};
 
-	}
+		return typeMapping[type] || starwars; // Imagen por defecto para tipos no válidos
+	};
+
 
 	return (
 		<div className="card justify-center items-center m-1 w-100 text-black ">
-			<img src={starwars} className="card-img-top" alt={item.name} />
+			<img src={getImageByUid(item.uid)} className="card-img-top" alt={item.name} onError={(e) => { e.target.src = starwars; }}/>
 			<div className="card-body">
 				<h5 className="card-title">{item?.name}</h5>
 
