@@ -3,7 +3,7 @@ import "../../styles/home.css";
 import { Spinner } from "../component/spinner"
 import { Context } from "../store/appContext";
 import { useParams } from "react-router";
-import starwars from "../../img/starwars.jpeg"
+import starwars from "../../img/starwars.png"
 
 
 export const DetailsVehicles = () => {
@@ -22,7 +22,7 @@ export const DetailsVehicles = () => {
 		actions.getVehiclesViews(params.id);
 	}, [params.id, actions]);
 
-	const vehicle = store.vehicle; // Facilita el acceso a los datos 
+	const vehicle = store?.vehicle; // Facilita el acceso a los datos 
 	if (!vehicle) {
 		return <Spinner/>
 	}
@@ -31,13 +31,13 @@ export const DetailsVehicles = () => {
 	return (
 		<div className="vh-75 d-flex justify-content-center mt-4 text-white">
 			<div className="row w-100">
-				<div className="col-6 justify-content-center align-items-center ">
-				<img src={getImageByUid(params.id)} className="img-fluid" alt={vehicle.name || "Star Wars Vehicle"} onError={(e) => { e.target.src = starwars;}} />
+				<div className="col-12 col-md-5 ">
+				<img src={getImageByUid(params.id)} className="img-fluid card-body-detalle" alt={vehicle.name || "Star Wars Vehicle"} onError={(e) => { e.target.src = starwars;}} />
 				</div>
-				<div className="col-6">
+				<div className="col-12 col-md-5">
 					<h3>{store?.vehicle?.name}</h3>
-					<p>{store?.description} </p>
-					<div className="card-body-detalle">
+					
+					<div className="card-body-detalle p-3">
 						<div className="detalle">
 							<p>Model: {store?.vehicle?.model}</p>
 						</div>

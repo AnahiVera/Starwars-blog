@@ -9,10 +9,10 @@ export const Characters = () => {
     return (
 
         <div className="d-flex flex-column p-5 w-100 text-white ">
-            <h2>Characters</h2>
+            <h2 className="text-center">Characters</h2>
             <div className="row ">
                 {Array.isArray(store.characters) && store.characters.map((item, index) => (
-                    <div className="col-md-3 my-4" key={index}>
+                    <div className="col-sm-6 col-md-3 col-lg-3 my-4" key={index}>
                         <Card item={item} type="people" />
                     </div>
 

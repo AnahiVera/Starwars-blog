@@ -3,7 +3,7 @@ import "../../styles/home.css";
 import { Spinner } from "../component/spinner"
 import { Context } from "../store/appContext";
 import { useParams } from "react-router";
-import starwars from "../../img/starwars.jpeg"
+import starwars from "../../img/starwars.png"
 
 export const DetailsCharacters = () => {
 	const { store, actions } = useContext(Context);
@@ -21,7 +21,7 @@ export const DetailsCharacters = () => {
 		actions.getCharacterViews(params.id);
 	}, [params.id, actions]);
 
-	const character = store.character; // Facilita el acceso a los datos del personaje
+	const character = store?.character; // Facilita el acceso a los datos del personaje
 
 	if (!character) {
 		return <Spinner/>
@@ -30,13 +30,13 @@ export const DetailsCharacters = () => {
 	return (
 		<div className="vh-75 d-flex justify-content-center mt-4 text-white">
 			<div className="row w-100">
-				<div className="col-6 justify-content-center align-items-center ">
-					<img src={getImageByUid(params.id)} className="img-fluid" alt={character.name || "Star Wars character"} onError={(e) => { e.target.src = starwars;}} />
+				<div className="col-12 col-md-5 ">
+					<img src={getImageByUid(params.id)} className="img-fluid card-body-detalle" alt={character.name || "Star Wars character"} onError={(e) => { e.target.src = starwars;}} />
 				</div>
-				<div className="col-6">
+				<div className="col-12 col-md-5">
 					<h3>{store?.character?.name}</h3>
-					<p>{store?.description} </p>
-					<div className="card-body-detalle">
+					
+					<div className="card-body-detalle p-3">
 						<div className="detalle">
 							<p>Birthday: {store?.character?.birth_year}</p>
 						</div>

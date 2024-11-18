@@ -3,7 +3,7 @@ import "../../styles/home.css";
 import { Spinner } from "../component/spinner"
 import { Context } from "../store/appContext";
 import { useParams } from "react-router";
-import starwars from "../../img/starwars.jpeg"
+import starwars from "../../img/starwars.png"
 
 export const DetailsPlanets = () => {
 	const { store, actions } = useContext(Context);
@@ -17,11 +17,11 @@ export const DetailsPlanets = () => {
 		return typeMapping["planets"] || starwars; // Imagen por defecto para tipos no válidos
 	};
 
-	useEffect(() => {
+	useEffect( () => {
 		actions.getPlanetsViews(params.id);
 	}, [params.id, actions]);
 
-	const planet = store.planet; // Facilita el acceso a los datos 
+	const planet = store?.planet; // Facilita el acceso a los datos 
 
 	if (!planet) {
 		return <Spinner/>
@@ -30,13 +30,13 @@ export const DetailsPlanets = () => {
 	return (
 		<div className="vh-75 d-flex justify-content-center mt-4 text-white">
 			<div className="row w-100">
-				<div className="col-6 justify-content-center align-items-center ">
-				<img src={getImageByUid(params.id)} className="img-fluid" alt={planet.name || "Star Wars planet"} onError={(e) => { e.target.src = starwars;}} />
+				<div className="col-12 col-md-5  ">
+				<img src={getImageByUid(params.id)} className="img-fluid card-body-detalle" alt={planet.name || "Star Wars planet"} onError={(e) => { e.target.src = starwars;}} />
 				</div>
-				<div className="col-6">
+				<div className="col-12 col-md-5">
 					<h3>{store?.planet?.name}</h3>
-					<p>{store?.description} </p>
-					<div className="card-body-detalle">
+					
+					<div className="card-body-detalle p-3">
 						<div className="detalle">
 							<p>Diameter: {store?.planet?.diameter}</p>
 						</div>

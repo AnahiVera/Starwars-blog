@@ -2,7 +2,7 @@ import React, { Component, useContext } from "react";
 import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";
 import "../../styles/home.css";
-import starwars from "../../img/starwars.jpeg"
+import starwars from "../../img/starwars.png"
 
 export const Card = ({ item, type }) => {   /* item puede ser character, vehicle or planet */
 
@@ -24,18 +24,17 @@ export const Card = ({ item, type }) => {   /* item puede ser character, vehicle
 
 
 	return (
-		
-			<div className="card items-center w-100 text-black h-100">
-				<img src={getImageByUid(item.uid)} className="card-img" alt={item.name} onError={(e) => { e.target.src = starwars; }} />
-				<div className="card-img-overlay ">
-					<h5 className="card-title">{item?.name}</h5>
+			<div className="card items-center w-100 text-black h-100 ">
+				<img src={getImageByUid(item.uid)} className="card-img " alt={item.name} onError={(e) => { e.target.src = starwars; }} />
+				<div className="card-img-overlay">
+					<h5 className="card-title ">{item?.name}</h5>
 					<button
 						onClick={() => {
 							const newItem = { ...item, type };
 							actions.addFavorites(newItem);
 							console.log("Adding to favorites:", newItem);
 						}}
-						className="btn btn-info m-1">
+						className="btn btn-info m-1 ">
 						<i className={isFavorite ? "fa-solid fa-heart" : "fa-regular fa-heart"}></i>
 					</button>
 					{
@@ -56,8 +55,6 @@ export const Card = ({ item, type }) => {   /* item puede ser character, vehicle
 
 				</div>
 			</div>
-			
-		
 	);
 }
 
