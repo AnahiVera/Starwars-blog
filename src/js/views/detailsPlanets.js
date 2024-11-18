@@ -34,7 +34,7 @@ export const DetailsPlanets = () => {
 		<div className="vh-75 d-flex justify-content-center mt-4 text-white">
 			<div className="row w-100">
 				<div className="col-6 justify-content-center align-items-center ">
-				<img src={getImageByUid(params.id)} className="img-fluid" alt={planet.name || "Star Wars character"} onError={(e) => { e.target.src = starwars;}} />
+				<img src={getImageByUid(params.id)} className="img-fluid" alt={planet.name || "Star Wars planet"} onError={(e) => { e.target.src = starwars;}} />
 				</div>
 				<div className="col-6">
 					<h3>{store?.planet?.name}</h3>
