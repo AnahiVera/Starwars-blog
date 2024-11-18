@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import "../../styles/home.css";
+import { Spinner } from "../component/spinner"
 import { Context } from "../store/appContext";
 import { useParams } from "react-router";
 import starwars from "../../img/starwars.jpeg"
@@ -11,24 +12,19 @@ export const DetailsVehicles = () => {
 
 	const getImageByUid = (uid) => {
 		if (!uid) return starwars; // Imagen por defecto si no hay uid
-
 		const typeMapping = {
 			vehicles: `https://starwars-visualguide.com/assets/img/vehicles/${uid}.jpg`,
 		};
 		return typeMapping["vehicles"] || starwars; // Imagen por defecto para tipos no válidos
 	};
 
-
 	useEffect(() => {
 		actions.getVehiclesViews(params.id);
 	}, [params.id, actions]);
 
 	const vehicle = store.vehicle; // Facilita el acceso a los datos 
-
 	if (!vehicle) {
-		return <div className="spinner-border" role="status">
-			<span className="visually-hidden">Loading...</span>
-		</div>;
+		return <Spinner/>
 	}
 
 
