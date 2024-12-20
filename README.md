@@ -26,17 +26,13 @@ git clone [URL-del-repositorio]
 ```bash
 npm install
 ```
-3. Create a .env file:
-```
-$ cp .env.example .env
-```
 
-4. Start developer server:
+3. Start developer server:
 ```bash
 npm run start
 ```
 
-5. Open your browser at `http://localhost:3000`
+4. Open your browser at `http://localhost:3000`
 
 
 
